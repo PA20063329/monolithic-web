@@ -6,6 +6,7 @@
 <struts-config>
 	<form-beans>
 		<form-bean name="loginForm" type="com.wipro.webApp.form.ItemLookupForm" />
+		<form-bean name="productForm" type="com.wipro.webApp.form.ProductForm" />
 	</form-beans>
 	<action-mappings>
 		<action name="loginForm" path="/login"
@@ -14,11 +15,22 @@
 			<forward name="failure" path="/login.jsp" redirect="true" />
 			<forward name="success" path="/success.jsp" redirect="true" />
 		</action>
+		
+		
+		
+		<action name="productForm" path="/product"
+			type="com.wipro.webApp.action.ProductAction" scope="request"
+			input="/product.jsp">
+			<forward name="failure" path="/product.jsp" redirect="true" />
+			<forward name="success" path="/success.jsp" redirect="true" />
+		</action>
+		
+		
 	</action-mappings>
-	 <plug-in className="com.mkyong.common.plugin.HibernatePlugin">
+	 <plug-in className="com.wipro.common.plugin.HibernatePlugin">
       	<set-property property="path" value="/hibernate.cfg.xml"/>
     </plug-in>
  
  <!-- <message-resources
-		parameter="com.mkyong.customer.properties.Customer" /> -->
+		parameter="com.wipro.entity.properties.Customer" /> -->
 </struts-config>
