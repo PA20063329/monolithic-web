@@ -15,7 +15,7 @@ import junit.framework.Assert;
  */
 public class ItemLookupDAO {
 	
-	public Item findById(Long id) {
+	public Item findById(Long id,Session session) {
 		System.out.println("Inside ItemLookupDAO");
 		Assert.assertNotNull(id);
 		return (Item)session.get(Item.class, id);

@@ -14,8 +14,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.wipro.common.plugin.HibernatePlugin;
-import com.wipro.dao.ItemLookupDAO;
 import com.wipro.dao.entity.Item;
+import com.wipro.service.ItemService;
 import com.wipro.webApp.form.ItemLookupForm;
 
 /**
@@ -30,8 +30,8 @@ public class ItemLookupAction extends Action {
 			throws Exception {
 		System.out.println("Inside Item Lookup Action");
 		ItemLookupForm loginForm = (ItemLookupForm) form;
-		
-		ItemLookupDAO dao = new ItemLookupDAO();
+		ItemService service = new ItemService();
+	
 		if(loginForm.getId() == null)
 			System.out.println("ID Is null");
 		SessionFactory sessionFactory = 
@@ -39,7 +39,7 @@ public class ItemLookupAction extends Action {
 	                            .getAttribute(HibernatePlugin.KEY_NAME);
 
 		Session session = sessionFactory.openSession();
-		Item i = dao.findById(loginForm.getId(), session);
+		Item i = service.getItemById(loginForm.getId(), session);
 		//copy customerform to model
 		/*BeanUtils.copyProperties(customer, customerForm);
 			

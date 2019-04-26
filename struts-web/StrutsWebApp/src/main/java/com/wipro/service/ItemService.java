@@ -16,7 +16,7 @@ public class ItemService {
 		ItemLookupDAO itemRepository = new ItemLookupDAO();
 		Item response = null;
 		try {
-			response = itemRepository.findById(id);
+			response = itemRepository.findById(id,session);
 			System.out.println(new Date() + " Returning Item: " + id);
 		}catch(Exception e) {
 			System.out.println(new Date() + " No Item Found With id : " + id);
